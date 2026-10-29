@@ -97,7 +97,7 @@ Build a mobile-friendly **Expense & Budget Visualizer** web app using HTML, CSS,
 - [x] **Task 5.3** — Write `README.md` with project description and deploy instructions
 - [x] **Task 5.4** — Write `.kiro/specs` files (requirements.md, design.md, tasks.md)
 - [x] **Task 5.5** — Push all files to GitHub
-- [ ] **Task 5.6** — Deploy via GitHub Pages
+- [x] **Task 5.6** — Deploy via GitHub Pages
 
 ---
 
