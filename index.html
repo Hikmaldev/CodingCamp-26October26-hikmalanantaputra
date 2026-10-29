@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expense & Budget Visualizer</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <!-- Dark/Light Toggle -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+    <span id="themeIcon">🌙</span>
+  </button>
+
+  <div class="container">
+    <header>
+      <h1>💰 Budget Tracker</h1>
+    </header>
+
+    <!-- Total Balance -->
+    <section class="balance-card">
+      <p class="balance-label">Total Balance</p>
+      <h2 class="balance-amount" id="totalBalance">Rp 0</h2>
+    </section>
+
+    <!-- Spending Limit -->
+    <section class="limit-section">
+      <label for="spendingLimit">⚠️ Spending Limit (Rp)</label>
+      <div class="limit-input-row">
+        <input type="number" id="spendingLimit" placeholder="e.g. 500000" min="0" />
+        <button id="setLimitBtn">Set</button>
+      </div>
+      <p class="limit-status" id="limitStatus"></p>
+    </section>
+
+    <!-- Input Form -->
+    <section class="form-section">
+      <h3>Add Transaction</h3>
+      <form id="transactionForm">
+        <div class="form-group">
+          <label for="itemName">Item Name</label>
+          <input type="text" id="itemName" placeholder="e.g. Lunch" required />
+        </div>
+        <div class="form-group">
+          <label for="amount">Amount (Rp)</label>
+          <input type="number" id="amount" placeholder="e.g. 25000" min="1" required />
+        </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select id="category" required>
+            <option value="">-- Select Category --</option>
+            <option value="Food">🍔 Food</option>
+            <option value="Transport">🚌 Transport</option>
+            <option value="Fun">🎉 Fun</option>
+            <option id="customCategoryOption" value="__custom__">➕ Add Custom...</option>
+          </select>
+        </div>
+        <!-- Custom category input (hidden by default) -->
+        <div class="form-group" id="customCategoryGroup" style="display:none;">
+          <label for="customCategoryInput">Custom Category Name</label>
+          <input type="text" id="customCategoryInput" placeholder="e.g. Health" />
+        </div>
+        <button type="submit" class="btn-add">Add Transaction</button>
+      </form>
+    </section>
+
+    <!-- Sort Controls -->
+    <section class="sort-section">
+      <h3>Transactions</h3>
+      <div class="sort-controls">
+        <label for="sortBy">Sort by:</label>
+        <select id="sortBy">
+          <option value="date-desc">Date (Newest)</option>
+          <option value="date-asc">Date (Oldest)</option>
+          <option value="amount-desc">Amount (High → Low)</option>
+          <option value="amount-asc">Amount (Low → High)</option>
+          <option value="category-asc">Category (A → Z)</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Transaction List -->
+    <section class="transaction-list" id="transactionList">
+      <p class="empty-state" id="emptyState">No transactions yet. Add one above!</p>
+    </section>
+
+    <!-- Pie Chart -->
+    <section class="chart-section">
+      <h3>Spending by Category</h3>
+      <div class="chart-wrapper">
+        <canvas id="spendingChart"></canvas>
+      </div>
+    </section>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
